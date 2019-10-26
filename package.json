@@ -1,0 +1,22 @@
+{
+  "name": "ts-node-livereload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/gulp": "^4.0.6",
+    "@types/gulp-sourcemaps": "0.0.32",
+    "@types/node": "^12.11.7",
+    "gulp": "^4.0.2",
+    "gulp-livereload": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^5.0.1",
+    "typescript": "^3.6.4"
+  }
+}
