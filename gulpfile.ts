@@ -4,6 +4,12 @@ import typescript from 'gulp-typescript';
 import sourcemaps from 'gulp-sourcemaps';
 import through2 from 'through2';
 import { exec } from 'child_process';
+import yargs from 'yargs';
+
+const args = yargs
+    .boolean('reload')
+    .argv;
+
 
 const tsProject = typescript.createProject('tsconfig.json');
 const tsSrc = tsProject.src();
@@ -23,7 +29,9 @@ export async function ts() {
         .pipe(sourcemaps.write())
         .pipe(prependShebang())
         .pipe(dest(tsProject.options.outDir))
-    livereload.reload();
+    if (args.reload) {
+        livereload.reload();
+    }
     return;
 }
 
@@ -48,7 +56,9 @@ export async function tsc(): Promise<any> {
 }
 
 export async function watchTs() {
-    livereload.listen();
+    if (args.reload) {
+        livereload.listen();
+    }
     console.log('starting initial ts');
     await ts();
     console.log('finished initial ts, watching file changes');
