@@ -3,6 +3,7 @@ import livereload from 'gulp-livereload';
 import typescript from 'gulp-typescript';
 import sourcemaps from 'gulp-sourcemaps';
 import through2 from 'through2';
+import { exec } from 'child_process';
 
 const tsProject = typescript.createProject('tsconfig.json');
 const tsSrc = tsProject.src();
@@ -24,6 +25,26 @@ export async function ts() {
         .pipe(dest(tsProject.options.outDir))
     livereload.reload();
     return;
+}
+
+// potentialy can run faster then gulp typescript - didn't prove itself
+export async function tsc(): Promise<any> {
+    return new Promise(async function tscPromiseCallback(resolve, reject) {
+        const tscProcess = await exec('tsc');
+
+        tscProcess.on('data', (data) => {
+        });
+        tscProcess.on('error', (data) => {
+            reject(data);
+        });
+        tscProcess.on('close', (data) => {
+            resolve(data);
+        });
+        tscProcess.on('end', (data) => {
+            resolve(data);
+        });
+
+    });
 }
 
 export async function watchTs() {
