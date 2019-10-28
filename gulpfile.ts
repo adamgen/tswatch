@@ -1,23 +1,25 @@
+#! /usr/bin/env node
 import livereload from 'gulp-livereload';
 
 import { args } from './args';
 import { nodemon } from './tasks/nodemon';
 import { ts } from './tasks/ts';
 import { watchTs } from './tasks/watchTs';
+import { tsc } from './tasks/tsc';
 
 export async function run() {
-    if (args.reload) {
-        livereload.listen();
+    if (args.typescript) {
+        watchTs();
     }
 
     if (args.nodemon) {
         nodemon();
     }
 
-    if (args.typescript) {
-        ts();
-        watchTs();
+    if (args.reload) {
+        livereload.listen();
     }
+
 }
 
 const isEntryScript = require.main === module;
