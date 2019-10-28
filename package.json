@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/gulp-nodemon": "0.0.32",
     "gulp": "^4.0.2",
     "gulp-livereload": "^4.0.2",
+    "gulp-nodemon": "^2.4.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-typescript": "^5.0.1",
     "through2": "^3.0.1",
