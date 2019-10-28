@@ -1,9 +1,5 @@
-import { watch } from 'gulp';
-import { ts } from './ts';
+import { exec } from 'child_process';
 
 export async function watchTs() {
-    watch('**/*.ts', async function watchFSChangeTsCallback(cb) {
-        await ts();
-        cb();
-    });
+    const tscProcess = exec('tsc -w -p tsconfig.json');
 };
