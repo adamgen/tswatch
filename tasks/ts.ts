@@ -15,9 +15,5 @@ export async function ts() {
         .pipe(sourcemaps.write())
         .pipe(prependString('#!/usr/bin/env node\n'))
         .pipe(dest(tsProject.options.outDir));
-    if (args.reload) {
-        livereload.reload();
-        console.log('reloaded')
-    }
     return promise;
 }
