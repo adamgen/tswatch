@@ -1,10 +1,6 @@
 import yargs from 'yargs';
 
-export const args: {
-    reload: boolean,
-    nodemon: string,
-    typescript: boolean,
-} = yargs
+export const args = yargs
     .options({
         reload: {
             boolean: true,
@@ -15,6 +11,9 @@ export const args: {
         typescript: {
             alias: 'ts',
             boolean: true,
-        }
+        },
+        webpack: {
+            boolean: true,
+        },
     })
-        .argv;
+    .argv;

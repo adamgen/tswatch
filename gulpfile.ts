@@ -4,6 +4,7 @@ import livereload from 'gulp-livereload';
 import { args } from './args';
 import { nodemonListen } from './tasks/nodemon';
 import { watchTs } from './tasks/watchTs';
+import { webpackListen } from './tasks/webpack';
 
 export async function run() {
     if (args.typescript) {
@@ -18,6 +19,9 @@ export async function run() {
         livereload.listen();
     }
 
+    if (args.webpack) {
+        webpackListen();
+    }
 }
 
 const isEntryScript = require.main === module;
