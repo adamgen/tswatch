@@ -1,7 +1,7 @@
-import livereload from 'gulp-livereload';
 import nodemon from 'nodemon';
 
 import { args } from '../args';
+import { refresh } from './livereload';
 
 export function nodemonListen() {
     const stream = nodemon({
@@ -21,8 +21,7 @@ export function nodemonListen() {
             const stringMsg = msg.toString();
             if (stringMsg.includes('RESTART_SUCCESS')) {
                 if (args.reload) {
-                    livereload.reload();
-                    console.log('nodemon reloaded ');
+                    refresh();
                 }
             } else {
                 console.log(stringMsg);
