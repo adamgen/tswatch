@@ -7,9 +7,6 @@ export const webpackListen = function webpackListen() {
     const webpackConfig: webpack.Configuration = require(webpackPath);
 
     const compiler = webpack(webpackConfig);
-    compiler.watch({
-        aggregateTimeout: 300,
-    }, (err, stats) => {
-        refresh();
+    compiler.watch({}, (err, stats) => {
     });
 }
