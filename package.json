@@ -15,12 +15,14 @@
   "dependencies": {
     "@types/chalk": "^2.2.0",
     "@types/gulp-nodemon": "0.0.32",
+    "@types/nodemon": "^1.19.0",
     "chalk": "^2.4.2",
     "gulp": "^4.0.2",
     "gulp-livereload": "^4.0.2",
     "gulp-nodemon": "^2.4.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-typescript": "^5.0.1",
+    "nodemon": "^1.19.4",
     "through2": "^3.0.1",
     "yargs": "^14.2.0"
   },

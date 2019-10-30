@@ -1,22 +1,24 @@
 import livereload from 'gulp-livereload';
-import gulpNodemon from 'gulp-nodemon';
+import nodemon from 'nodemon';
 
 import { args } from '../args';
 
-export function nodemon() {
-    const stream = gulpNodemon({
+export function nodemonListen() {
+    const stream = nodemon({
         script: args.nodemon,
         watch: [
             'dist',
         ],
         ext: 'js',
         stdout: false,
+        env: {
+
+        },
     });
 
     stream
         .on('stdout', function (msg: Buffer) {
             const stringMsg = msg.toString();
-            
             if (stringMsg.includes('RESTART_SUCCESS')) {
                 if (args.reload) {
                     livereload.reload();
@@ -26,8 +28,8 @@ export function nodemon() {
                 console.log(stringMsg);
             }
         })
-        .on('crash', function () {
-            console.error('Application has crashed!\n')
+        .on('crash', function (err) {
+            console.error('Application has crashed!\n', err)
             stream.emit('restart', 1)
         });
 }

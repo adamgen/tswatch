@@ -2,7 +2,7 @@
 import livereload from 'gulp-livereload';
 
 import { args } from './args';
-import { nodemon } from './tasks/nodemon';
+import { nodemonListen } from './tasks/nodemon';
 import { watchTs } from './tasks/watchTs';
 
 export async function run() {
@@ -11,7 +11,7 @@ export async function run() {
     }
 
     if (args.nodemon) {
-        nodemon();
+        nodemonListen();
     }
 
     if (args.reload) {
