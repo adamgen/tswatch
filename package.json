@@ -30,15 +30,13 @@
     "nodemon": "^1.19.4",
     "through2": "^3.0.1",
     "webpack": "^4.41.2",
-    "yargs": "^14.2.0"
-  },
-  "devDependencies": {
-    "typescript": "^3.6.4",
+    "yargs": "^14.2.0",
     "@types/gulp": "^4.0.6",
     "@types/gulp-insert": "^0.5.7",
     "@types/gulp-sourcemaps": "0.0.32",
-    "@types/node": "^12.11.7",
+    "@types/node": "^12.12.6",
     "@types/through2": "^2.0.34",
-    "@types/yargs": "^13.0.3"
+    "@types/yargs": "^13.0.3",
+    "typescript": "^3.6.4"
   }
 }
