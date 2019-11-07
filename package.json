@@ -1,10 +1,12 @@
 {
   "name": "@adamgen/tswatch",
   "version": "1.0.0",
-  "description": "",
+  "description": "A build tool for full stack application in TypeScript",
+  "repository": "github:adamgen/tswatch",
   "main": "index.js",
   "scripts": {
-    "start": "node ./gulpfile.js"
+    "start": "node ./gulpfile.js",
+    "build": "tsc -p tsconfig.json -w"
   },
   "bin": {
     "tswatch": "./gulpfile.js"
