@@ -2,6 +2,7 @@ import nodemon from 'nodemon';
 
 import { args } from '../args';
 import { refresh } from './livereload';
+import { logger } from './logger';
 
 export function nodemonListen() {
     const stream = nodemon({
@@ -24,11 +25,16 @@ export function nodemonListen() {
                     refresh();
                 }
             } else {
-                console.log(stringMsg);
+                logger('[nodemon]', stringMsg);
             }
         })
-        .on('crash', function (err) {
-            console.error('Application has crashed!\n', err)
-            stream.emit('restart', 1)
+        .on('stderr', function (msg: Buffer) {
+            const stringMsg = msg.toString();
+            logger('[nodemon]', stringMsg);
+        })
+        .on('crash', function (...err) {
+            logger.error('Application has crashed!\n');
+            logger(err);
+            stream.emit('restart', 1);
         });
 }
